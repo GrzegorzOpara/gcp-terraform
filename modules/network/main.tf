@@ -5,7 +5,7 @@ resource "google_compute_network" "vpc" {
 }
 
 # GKE subnet
-resource "google_compute_subnetwork" "gke-subnet" {
+resource "google_compute_subnetwork" "subnet-gke" {
   name          = "${var.project_id}-subnet-gke"
   region        = var.region
   network       = google_compute_network.vpc.name
@@ -13,7 +13,7 @@ resource "google_compute_subnetwork" "gke-subnet" {
 }
 
 # DB subnet
-resource "google_compute_subnetwork" "db-subnet" {
+resource "google_compute_subnetwork" "subnet-db" {
   name          = "${var.project_id}-subnet-db"
   region        = var.region
   network       = google_compute_network.vpc.name

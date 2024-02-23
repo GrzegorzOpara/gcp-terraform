@@ -15,7 +15,7 @@ resource "google_container_cluster" "primary" {
   initial_node_count       = 1
 
   network    = google_compute_network.vpc.name
-  subnetwork = google_compute_subnetwork.gke-subnet.name
+  subnetwork = google_compute_subnetwork.subnet-gke.name
 }
 
 # Separately Managed Node Pool
