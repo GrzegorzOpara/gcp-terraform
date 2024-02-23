@@ -2,7 +2,6 @@
 resource "google_compute_network" "vpc" {
   name                    = "${var.project_id}-vpc"
   auto_create_subnetworks = "false"
-  private_ip_google_access = "true"
 }
 
 # GKE subnet
@@ -18,5 +17,6 @@ resource "google_compute_subnetwork" "subnet-db" {
   name          = "${var.project_id}-subnet-db"
   region        = var.region
   network       = google_compute_network.vpc.name
+  private_ip_google_access = "true"
   ip_cidr_range = "10.10.1.0/24"
 }
