@@ -21,6 +21,18 @@
   gcloud services enable secretmanager.googleapis.com
   ``
 
+- Cloud Resource Manager API
+
+  ``
+  gcloud services enable cloudresourcemanager.googleapis.com
+  ``
+
+- Cloud SQL Admin API
+
+  ``
+  gcloud services enable sqladmin.googleapis.com
+  ``
+
 
 ### Cloud Build configuration
 1. Create github host connection (https://pantheon.corp.google.com/cloud-build/connections/create)
@@ -40,3 +52,10 @@
     gcloud projects add-iam-policy-binding $PROJECT_ID --member serviceAccount:$CLOUDBUILD_SA --role roles/editor
     ``
 5. Grant permissions to Cloud Build Service Account to access GCS Bucket with state file (https://cloud.google.com/docs/terraform/resource-management/store-state#before_you_begin)
+
+### Managed MySQL
+1. Create password for MySQL root and store it in secret manager
+
+    ``
+    echo "put-your-password-here" | gcloud secrets create mysql-root-pwd --data-file=-
+    ``
