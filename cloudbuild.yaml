@@ -6,7 +6,11 @@ steps:
   - id: 'tf plan'
     name: 'hashicorp/terraform:1.0.0'
     entrypoint: sh
-    args: ["-c","terraform plan -out=plan.out"]    
+    args: ["-c","terraform plan"]    
+  - id: 'tf plan'
+    name: 'hashicorp/terraform:1.0.0'
+    entrypoint: sh
+    args: ["-c","terraform apply -auto-approve"]    
 options:
   env: 
     - 'TF_VAR_project_id=$PROJECT_ID'
