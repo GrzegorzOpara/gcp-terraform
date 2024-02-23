@@ -1,5 +1,5 @@
 terraform {
   backend "gcs" {
-    bucket = "gopara-tf-state"
+    bucket = "gopara-gke-lab-gcs-tf"
   }
 }
