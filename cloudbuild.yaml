@@ -1,0 +1,13 @@
+steps:
+  - id: 'tf init'
+    name: 'hashicorp/terraform:1.0.0'
+    entrypoint: sh
+    args: ["-c","terraform init -upgrade "]
+  - id: 'tf plan'
+    name: 'hashicorp/terraform:1.0.0'
+    entrypoint: sh
+    args: ["-c","terraform plan -out=plan.out"]    
+options:
+  env: 
+    - 'TF_VAR_project_id = $PROJECT_ID'
+    - 'TF_VAR_region = $LOCATION'
