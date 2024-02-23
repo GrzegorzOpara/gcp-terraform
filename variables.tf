@@ -7,3 +7,4 @@ variable "region" {
   description = "The GCP region where the network will be deployed."
   type        = string
 }
+
