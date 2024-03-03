@@ -25,6 +25,11 @@ resource "google_container_node_pool" "app-node-pool" {
   version = data.google_container_engine_versions.gke_version.release_channel_latest_version["STABLE"]
   node_count = 1
 
+  autoscaling {
+    min_node_count = 1
+    max_node_count = 3
+  }
+
   node_config {
     oauth_scopes = [
       "https://www.googleapis.com/auth/logging.write",

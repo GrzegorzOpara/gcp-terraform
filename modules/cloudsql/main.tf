@@ -19,10 +19,15 @@ resource "google_sql_database_instance" "mysql" {
   }
 }
 
+data "google_secret_manager_secret_version" "db-wp-admin-pwd" {
+ secret   = "db-wp-admin-pwd"
+}
+
 resource "google_sql_user" "users" {
-  name     = "root"
+  name     = "db-wp-admin"
+  host     = "%"
   instance = google_sql_database_instance.mysql.name
-  password = var.mysql-root-pwd
+  password = data.google_secret_manager_secret_version.db-wp-admin-pwd.secret_data
 }
 
 resource "google_sql_database" "database" {
